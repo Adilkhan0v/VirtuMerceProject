@@ -27,14 +27,20 @@ public class AuthenticateController : ControllerBase
             }));
         }
 
-        [HttpPost("api/user/signin")]
+        [HttpPost("api/user/signin")] 
         public async Task<IActionResult> Signin([FromBody] UserSigninViewModel userSigninViewModel)
         {
-            return Ok(await _authService.Signin(new UserSigninDto
+            try
             {
-                Login = userSigninViewModel.Login,
-                Password = userSigninViewModel.Password
-            }));
+                return Ok(await _authService.Signin(new UserSigninDto
+                {
+                    Login = userSigninViewModel.Login,
+                    Password = userSigninViewModel.Password
+                }));
+            }
+            catch(ArgumentException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
-
 }

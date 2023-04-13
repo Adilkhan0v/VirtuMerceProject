@@ -47,6 +47,11 @@ public class AuthService : IAuthService
         {
             throw new ArgumentException("Invalid login or password");
         }
+
+        if (BCrypt.Net.BCrypt.Verify(userSigninDto.Password, user.PasswordHash) == false)
+        {
+            throw new ArgumentException("Invalid login or password");
+        }
         
         return GenerateToken(user.Login,user.Username);
     }
