@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtuMerce.Api", "VirtuMerce.Api\VirtuMerce.Api.csproj", "{F8CFFADE-5F2A-4E93-8036-AD8EAFDFE4E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitruMerce.Bll", "VitruMerce.Bll\VitruMerce.Bll.csproj", "{C0375598-E399-4026-962C-FC3B9FFC5818}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtuMerce.Dal", "VirtuMerce.Dal\VirtuMerce.Dal.csproj", "{FB4D567A-00DB-492B-8AAE-6282ACD32321}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtuMerce.Contracts", "VirtuMerce.Contracts\VirtuMerce.Contracts.csproj", "{14D988A5-7E7C-455F-8936-ED08B708E02E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,17 @@ Global
 		{F8CFFADE-5F2A-4E93-8036-AD8EAFDFE4E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8CFFADE-5F2A-4E93-8036-AD8EAFDFE4E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8CFFADE-5F2A-4E93-8036-AD8EAFDFE4E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0375598-E399-4026-962C-FC3B9FFC5818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0375598-E399-4026-962C-FC3B9FFC5818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0375598-E399-4026-962C-FC3B9FFC5818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0375598-E399-4026-962C-FC3B9FFC5818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB4D567A-00DB-492B-8AAE-6282ACD32321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB4D567A-00DB-492B-8AAE-6282ACD32321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB4D567A-00DB-492B-8AAE-6282ACD32321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB4D567A-00DB-492B-8AAE-6282ACD32321}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14D988A5-7E7C-455F-8936-ED08B708E02E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14D988A5-7E7C-455F-8936-ED08B708E02E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14D988A5-7E7C-455F-8936-ED08B708E02E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14D988A5-7E7C-455F-8936-ED08B708E02E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

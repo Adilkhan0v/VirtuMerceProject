@@ -1,6 +1,10 @@
-﻿namespace VirtuMerce.Dal.Entities;
+﻿using VirtuMerce.Dal.Entities.Abstract;
 
-public class UserEntity
+namespace VirtuMerce.Dal.Entities;
+
+public class UserEntity : BaseEntity
 {
-    
+    public string Login { get; set; }
+    public string PasswordHash { get; set; }
+    public string Username { get; set; }
 }

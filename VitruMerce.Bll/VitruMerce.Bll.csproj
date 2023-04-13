@@ -6,4 +6,15 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\VirtuMerce.Contracts\VirtuMerce.Contracts.csproj" />
+      <ProjectReference Include="..\VirtuMerce.Dal\VirtuMerce.Dal.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="BCrypt.Net" Version="0.1.0" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="7.0.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.28.1" />
+    </ItemGroup>
+
 </Project>

@@ -1,6 +1,8 @@
-﻿namespace VirtuMerce.Dal.Entities;
+﻿using VirtuMerce.Dal.Entities.Abstract;
 
-public class CategoryEntity
+namespace VirtuMerce.Dal.Entities;
+
+public class CategoryEntity : BaseEntity
 {
-    
+    public string Name { get; set; }
 }

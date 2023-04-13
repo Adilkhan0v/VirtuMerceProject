@@ -1,6 +1,10 @@
-﻿namespace VirtuMerce.Dal.Providers.Abstract;
+﻿using VirtuMerce.Dal.Entities;
 
-public interface IUserProvider
+namespace VirtuMerce.Dal.Providers.Abstract;
+
+public interface IUserProvider : ICrudProvider<UserEntity>
 {
-    
+    Task<UserEntity?>GetByLogin(string login);
 }
+
+

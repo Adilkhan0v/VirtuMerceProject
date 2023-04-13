@@ -1,6 +1,8 @@
-﻿namespace VirtuMerce.Dal.Providers.Abstract;
+﻿using VirtuMerce.Dal.Entities;
 
-public class ICategoryProvider
+namespace VirtuMerce.Dal.Providers.Abstract;
+
+public interface ICategoryProvider : ICrudProvider<CategoryEntity>
 {
-    
 }
+
