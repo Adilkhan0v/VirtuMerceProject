@@ -1,6 +1,8 @@
 ﻿using System.Net;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
 using VirtuMerce.Api.ViewModels;
 using VitruMerce.Bll;
 using VitruMerce.Bll.Dtos;
@@ -41,6 +43,20 @@ public class AuthenticateController : ControllerBase
             catch(ArgumentException e)
             {
                 return BadRequest(e.Message);
+            }
+        }
+        
+        [Authorize]
+        [HttpGet("api/auth")]
+        public async Task<IActionResult> GetCurrentUser()
+        {
+            try
+            {
+                return Ok(await _authService.GetUserByHeaders(Request.Headers[HeaderNames.Authorization]!));
+            }
+            catch (ArgumentException)
+            {
+                return NotFound("User is not found, wrong token");
             }
         }
 }
