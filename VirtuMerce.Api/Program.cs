@@ -16,6 +16,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserProvider, UserProvider>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ICategoryProvider, CategoryProvider>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductProvider, ProductProvider>();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.Configure<SecretOptions>(builder.Configuration.GetSection("SecretOptions"));
 
 builder.Services.AddDbContext<ApplicationContext>(x =>

@@ -7,7 +7,7 @@ namespace VirtuMerce.Dal.Providers.EntityFramework.Abstract;
 
 public abstract class BaseProvider<TEntity> : ICrudProvider<TEntity> where TEntity:BaseEntity
 {
-    private readonly ApplicationContext _applicationContext;
+    protected readonly ApplicationContext _applicationContext;
     private readonly DbSet<TEntity> _dbSet;
 
     protected BaseProvider(ApplicationContext applicationContext)

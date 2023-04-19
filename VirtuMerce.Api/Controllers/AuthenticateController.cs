@@ -18,7 +18,7 @@ public class AuthenticateController : ControllerBase
                 _authService = authService;
         }
         
-        [HttpPost("api/user/signup")]
+        [HttpPost("api/users/signup")]
         public async Task<IActionResult> Signup([FromBody]UserSignupViewModel userSignupViewModel)
         {
             return Ok(await _authService.Signup(new UserSignupDto
@@ -29,7 +29,7 @@ public class AuthenticateController : ControllerBase
             }));
         }
 
-        [HttpPost("api/user/signin")] 
+        [HttpPost("api/users/signin")] 
         public async Task<IActionResult> Signin([FromBody] UserSigninViewModel userSigninViewModel)
         {
             try
