@@ -7,36 +7,61 @@ namespace VitruMerce.Bll;
 public class ProductService : IProductService
 {
     private readonly IProductProvider _productProvider;
+    private readonly IUserProvider _userProvider;
 
-    public ProductService(IProductProvider productProvider)
+    public ProductService(IProductProvider productProvider, IUserProvider userProvider)
     {
         _productProvider = productProvider;
+        _userProvider = userProvider;
     }
     
-    public async Task<ProductDto> GetProductById(Guid id)
+    public async Task<ProductDto> GetProductById(Guid id, Guid userId)
     {
+        
         var product = await _productProvider.GetById(id);
 
-        return new ProductDto(product.Id, product.Title, product.Details, product.Price);
+        if (product.User.Id != userId)
+        {
+            throw new ArgumentException("Log in first!");
+        }
+
+        return new ProductDto(product.Id, product.Title, product.Details, product.Price, product.User.Id);
     }
 
-    public async Task DeleteProduct(Guid id)
+    public async Task DeleteProduct(Guid id, Guid userId)
     {
-       await _productProvider.Delete(id);
+        var productEntity = await _productProvider.GetById(id);
+        if (productEntity.User.Id != userId)
+        {
+            throw new ArgumentException("Log in first!");
+        }
+        
+        await _productProvider.Delete(id);
     }
 
-    public async Task CreateProduct(ProductDto productDto)
-    {
+    public async Task<Guid> CreateProduct(ProductDto productDto)
+    { 
+        var user = await _userProvider.GetById(productDto.UserId);
+        
        await _productProvider.Create(new ProductEntity
         {
             Title = productDto.Title,
             Details = productDto.Details,
-            Price = productDto.Price
+            Price = productDto.Price,
+            User = user
         });
+       return productDto.Id;
     }
 
     public async Task UpdateProduct(ProductDto productDto)
     {
+        var user = await _userProvider.GetById(productDto.UserId);
+
+        if (productDto.UserId != user.Id)
+        {
+            throw new ArgumentException("User not found");
+        }
+        
         var product = await _productProvider.GetById(productDto.Id);
         product.Details = productDto.Details;
         product.Title = productDto.Title;
@@ -47,6 +72,6 @@ public class ProductService : IProductService
     public async Task<List<ProductDto>> GetAll()
     {
         var fromDb = await _productProvider.GetAll();
-        return fromDb.Select(x => new ProductDto(x.Id, x.Title, x.Details, x.Price)).ToList();
+        return fromDb.Select(x => new ProductDto(x.Id, x.Title, x.Details, x.Price, x.User.Id)).ToList();
     }
 }
