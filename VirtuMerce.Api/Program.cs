@@ -22,9 +22,11 @@ builder.Services.AddScoped<IProductProvider, ProductProvider>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.Configure<SecretOptions>(builder.Configuration.GetSection("SecretOptions"));
 
-builder.Services.AddDbContext<ApplicationContext>(x =>
+/*builder.Services.AddDbContext<ApplicationContext>(x =>
     x.UseInMemoryDatabase(builder.Configuration.GetConnectionString("InMemory")!));
-
+*/
+builder.Services.AddDbContext<ApplicationContext>(x =>
+    x.UseNpgsql(builder.Configuration.GetConnectionString("Postgres")));
 
 #region Jwt Configuration
 
